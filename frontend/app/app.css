@@ -1,1 +1,11 @@
 @import "tailwindcss";
+
+@theme {
+    --color-xtrek-teal: #1b525d;
+    --color-xtrek-neutral: #281528;
+}
+
+html,
+body {
+    @apply text-neutral-700;
+}

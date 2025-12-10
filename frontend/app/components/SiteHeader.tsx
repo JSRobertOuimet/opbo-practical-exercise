@@ -1,0 +1,89 @@
+import { useTranslation } from "react-i18next";
+import { Link, NavLink, useLocation } from "react-router";
+import type { Locale } from "~/i18n";
+
+const Navbar = ({ locale }: { locale: Locale }) => {
+    const { t } = useTranslation();
+    const location = useLocation();
+
+    const makeLocalePath = (targetLocale: Locale) => {
+        const segments = location.pathname.split("/").filter(Boolean);
+
+        if (segments.length === 0) {
+            return `/${targetLocale}`;
+        }
+
+        segments[0] = targetLocale;
+
+        const path = `/${segments.join("/")}`;
+
+        return `${path}${location.search}${location.hash}`;
+    };
+
+    const baseClassName = "outline-offset-8";
+    const activeClassName = "font-bold text-xtrek-teal outline-offset-8";
+
+    return (
+        <header>
+            <nav className="flex flex-col">
+                <div className="bg-neutral-100">
+                    <div className="container mx-auto flex justify-end gap-2 px-4 py-1 text-sm">
+                        {locale === "en" ? (
+                            <NavLink
+                                to={makeLocalePath("fr")}
+                                className="outline-offset-2"
+                            >
+                                {t("nav.french")}
+                            </NavLink>
+                        ) : (
+                            <NavLink
+                                to={makeLocalePath("en")}
+                                className="outline-offset-2"
+                            >
+                                {t("nav.english")}
+                            </NavLink>
+                        )}
+                    </div>
+                </div>
+                <div className="container mx-auto flex items-center justify-between px-4 py-4">
+                    <Link to={`/${locale}`} className="outline-offset-8">
+                        <picture>
+                            <source
+                                media="(width < 40rem)"
+                                srcSet="/logos/logo-mark.svg"
+                                className="h-8"
+                            />
+                            <img
+                                src="/logos/logo-brandname.svg"
+                                alt={t("nav.logoAlt")}
+                                className="h-8"
+                            />
+                        </picture>
+                    </Link>
+                    <div className="flex gap-4 text-end">
+                        <NavLink
+                            to={`/${locale}`}
+                            className={({ isActive }) =>
+                                isActive ? activeClassName : baseClassName
+                            }
+                            end
+                        >
+                            {t("nav.cafeteria")}
+                        </NavLink>
+                        <NavLink
+                            to={`/${locale}/catering-services`}
+                            className={({ isActive }) =>
+                                isActive ? activeClassName : baseClassName
+                            }
+                            end
+                        >
+                            {t("nav.cateringServices")}
+                        </NavLink>
+                    </div>
+                </div>
+            </nav>
+        </header>
+    );
+};
+
+export default Navbar;
