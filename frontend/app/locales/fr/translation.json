@@ -1,0 +1,28 @@
+{
+    "layout": {
+        "title": "xtrek | Cafétéria"
+    },
+    "nav": {
+        "cafeteria": "Cafétéria",
+        "cateringServices": "Service de traiteur",
+        "english": "English",
+        "french": "Français"
+    },
+    "footer": {
+        "copyright": "© {{year}} xtrek. Tous droits réservés."
+    },
+    "pages": {
+        "cafeteria": {
+            "title": "Cafétéria",
+            "audience": "Pour le personnel",
+            "heading": "Menu du {{date}}",
+            "metaDescription": "Menu du {{date}}.",
+            "metaDescriptionFallback": "Menu de la cafétéria."
+        },
+        "cateringServices": {
+            "title": "Service de traiteur",
+            "audience": "Pour le grand public",
+            "metaDescription": "Services de traiteur de xtrek."
+        }
+    }
+}

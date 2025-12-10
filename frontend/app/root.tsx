@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import {
     isRouteErrorResponse,
     Links,
@@ -7,8 +8,10 @@ import {
     ScrollRestoration,
     useMatches,
 } from "react-router";
-
 import type { Route } from "./+types/root";
+
+import { I18nextProvider } from "react-i18next";
+import i18n, { normalizeLocale, type Locale } from "app/i18n";
 import "./app.css";
 
 export const links: Route.LinksFunction = () => [
@@ -26,8 +29,14 @@ export const links: Route.LinksFunction = () => [
 
 export function Layout({ children }: { children: React.ReactNode }) {
     const matches = useMatches();
-    const localeMatch = matches.find(match => match.params?.locale);
-    const locale = (localeMatch?.params?.locale as "en" | "fr") ?? "en";
+    const localeMatch = matches.find((match) => match.params?.locale);
+    const locale: Locale = normalizeLocale(localeMatch?.params?.locale);
+
+    useEffect(() => {
+        if (i18n.language !== locale) {
+            void i18n.changeLanguage(locale);
+        }
+    }, [locale]);
 
     return (
         <html lang={locale}>
@@ -44,7 +53,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
                     href="/favicon-light.ico"
                     media="(prefers-color-scheme: light)"
                 />
-
                 <link
                     rel="icon"
                     href="/favicon-dark.ico"
@@ -52,9 +60,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
                 />
             </head>
             <body>
-                {children}
-                <ScrollRestoration />
-                <Scripts />
+                <I18nextProvider i18n={i18n}>
+                    {children}
+                    <ScrollRestoration />
+                    <Scripts />
+                </I18nextProvider>
             </body>
         </html>
     );
@@ -81,11 +91,11 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
     }
 
     return (
-        <main className="pt-16 p-4 container mx-auto">
+        <main className="container mx-auto p-4 pt-16">
             <h1>{message}</h1>
             <p>{details}</p>
             {stack && (
-                <pre className="w-full p-4 overflow-x-auto">
+                <pre className="w-full overflow-x-auto p-4">
                     <code>{stack}</code>
                 </pre>
             )}

@@ -1,7 +1,12 @@
+import { useTranslation } from "react-i18next";
+
 const Footer = () => {
+    const { t } = useTranslation();
+    const year = new Date().getFullYear();
+
     return (
         <footer>
-            © {new Date().getFullYear()} xtrek. All rights reserved.
+            {t("footer.copyright", { year })}
         </footer>
     );
 };

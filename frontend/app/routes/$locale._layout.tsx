@@ -1,22 +1,40 @@
-import { Outlet, useParams } from "react-router";
+// app/routes/$locale._layout.tsx
+import { Outlet, useLoaderData } from "react-router";
+import type { Route } from "./+types/$locale._layout";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import {
+    DEFAULT_LOCALE,
+    getFixedT,
+    isSupportedLocale,
+    type Locale,
+} from "~/i18n";
 
-const SUPPORTED_LOCALES = ["en", "fr"] as const;
-type Locale = (typeof SUPPORTED_LOCALES)[number];
+type LoaderData = { locale: Locale };
 
-export function loader({ params }: { params: { locale?: string } }) {
+export function loader({ params }: Route.LoaderArgs) {
     const locale = params.locale;
 
-    if (!locale || !SUPPORTED_LOCALES.includes(locale as Locale)) {
+    if (!isSupportedLocale(locale)) {
         throw new Response("Not found", { status: 404 });
     }
 
     return { locale };
 }
 
-export default function LocaleLayout() {
-    const { locale = "en" } = useParams<{ locale: Locale }>();
+export function meta({ params }: Route.MetaArgs) {
+    const locale = (params.locale as Locale) ?? DEFAULT_LOCALE;
+    const t = getFixedT(locale);
+
+    return [
+        {
+            title: t("layout.title"),
+        },
+    ];
+}
+
+export default function LocaleLayout({}: Route.ComponentProps) {
+    const { locale } = useLoaderData<LoaderData>();
 
     return (
         <>
