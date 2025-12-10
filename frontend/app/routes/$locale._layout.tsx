@@ -1,8 +1,7 @@
-// app/routes/$locale._layout.tsx
 import { Outlet, useLoaderData } from "react-router";
 import type { Route } from "./+types/$locale._layout";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
+import SiteHeader from "../components/SiteHeader";
+import SiteFooter from "../components/SiteFooter";
 import {
     DEFAULT_LOCALE,
     getFixedT,
@@ -38,11 +37,11 @@ export default function LocaleLayout({}: Route.ComponentProps) {
 
     return (
         <>
-            <Navbar locale={locale} />
+            <SiteHeader locale={locale} />
             <main>
                 <Outlet />
             </main>
-            <Footer />
+            <SiteFooter />
         </>
     );
 }

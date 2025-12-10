@@ -59,7 +59,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
                     media="(prefers-color-scheme: dark)"
                 />
             </head>
-            <body>
+            <body className="h-screen">
                 <I18nextProvider i18n={i18n}>
                     {children}
                     <ScrollRestoration />
