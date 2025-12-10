@@ -5,11 +5,10 @@ import {
     Outlet,
     Scripts,
     ScrollRestoration,
+    useMatches,
 } from "react-router";
 
 import type { Route } from "./+types/root";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
 import "./app.css";
 
 export const links: Route.LinksFunction = () => [
@@ -26,8 +25,12 @@ export const links: Route.LinksFunction = () => [
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
+    const matches = useMatches();
+    const localeMatch = matches.find(match => match.params?.locale);
+    const locale = (localeMatch?.params?.locale as "en" | "fr") ?? "en";
+
     return (
-        <html lang="en">
+        <html lang={locale}>
             <head>
                 <meta charSet="utf-8" />
                 <meta
@@ -49,9 +52,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
                 />
             </head>
             <body>
-                <Header />
-                <main>{children}</main>
-                <Footer />
+                {children}
                 <ScrollRestoration />
                 <Scripts />
             </body>
