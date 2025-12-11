@@ -3,9 +3,9 @@
         "title": "xtrek | Cafeteria"
     },
     "nav": {
-        "logoAlt": "Logo of xtrek.",
+        "logo_alt": "Logo of xtrek.",
         "cafeteria": "Cafeteria",
-        "cateringServices": "Catering Services",
+        "catering_services": "Catering Services",
         "english": "English",
         "french": "Français"
     },
@@ -15,15 +15,43 @@
     "pages": {
         "cafeteria": {
             "title": "Cafeteria",
-            "audience": "For employees",
+            "audience": "For xtrek employees",
             "heading": "Menu for {{date}}",
-            "metaDescription": "Menu for {{date}}.",
-            "metaDescriptionFallback": "Cafeteria menu."
+            "ingredients": "List of ingredients",
+            "notification": "Please note that prices are updated every Sunday morning.",
+            "meta_description": "xtrek’s cafeteria menu for {{date}}.",
+            "menu_options": {
+                "mgb_bmc": {
+                    "name": "Mediterranean Grain Bowl",
+                    "description": "A vibrant and wholesome bowl packed with quinoa, brown rice, fresh vegetables, and tangy feta, topped with a zesty tahini dressing. Perfect for a light yet satisfying lunch.",
+                    "ingredients": "Quinoa, brown rice, chickpeas, cherry tomatoes, cucumber, kalamata olives, red onion, feta cheese, fresh parsley, lemon juice, olive oil, garlic, sea salt, black pepper, sumac, tahini dressing (tahini, lemon juice, garlic, water, salt)."
+                },
+                "tgc_cvt": {
+                    "name": "Thai Green Curry with Tofu",
+                    "description": "A fragrant and creamy coconut-based curry loaded with colorful vegetables and tender tofu, infused with authentic Thai spices and served with jasmine rice.",
+                    "ingredients": "Tofu (firm, cubed), coconut milk, green curry paste (green chilies, lemongrass, galangal, garlic, shallots, kaffir lime peel, coriander seeds, cumin, salt), bamboo shoots, zucchini, bell peppers (red and yellow), Thai basil, fish sauce (or soy sauce for vegetarian option), brown sugar, lime juice, jasmine rice (served on the side)."
+                },
+                "lvl_lvg": {
+                    "name": "Loaded Veggie Lasagna",
+                    "description": "A hearty, oven-baked lasagna layered with roasted vegetables, rich tomato sauce, and a trio of cheeses, delivering comfort and flavor in every bite.",
+                    "ingredients": "Lasagna noodles, ricotta cheese, mozzarella cheese, parmesan cheese, spinach, zucchini, eggplant, mushrooms, bell peppers, onion, garlic, olive oil, tomato sauce (tomatoes, basil, oregano, salt, pepper), fresh basil, nutmeg, eggs (in ricotta mix)."
+                },
+                "pjs_sje": {
+                    "name": "BBQ Pulled Jackfruit Sandwich",
+                    "description": "A smoky, sweet, and savory plant-based sandwich featuring tender jackfruit in BBQ sauce, topped with crunchy coleslaw and served on a toasted bun.",
+                    "ingredients": "Young green jackfruit (canned, drained), bbq sauce (tomato paste, vinegar, molasses, brown sugar, mustard, garlic powder, onion powder, smoked paprika), onion, garlic, olive oil, apple cider vinegar, coleslaw mix (cabbage, carrots), coleslaw dressing (mayonnaise, vinegar, sugar, celery seed, salt), whole wheat sandwich buns, pickles, fresh cilantro (optional garnish)."
+                },
+                "mod_mdj": {
+                    "name": "Menu of the day",
+                    "description": "Discover today’s fresh and flavorful selections, crafted by our chefs using seasonal ingredients and local produce.",
+                    "ingredients": "Ingredients are available upon request. Please ask our staff if you have any dietary concerns or allergies."
+                }
+            }
         },
-        "cateringServices": {
+        "catering_services": {
             "title": "Catering Services",
             "audience": "For the general public",
-            "metaDescription": "xtrek's catering services."
+            "meta_description": "xtrek's catering services."
         }
     }
 }
