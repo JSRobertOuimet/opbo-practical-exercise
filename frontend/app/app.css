@@ -7,5 +7,5 @@
 
 html,
 body {
-    @apply text-neutral-700;
+    @apply bg-neutral-50 text-neutral-700;
 }

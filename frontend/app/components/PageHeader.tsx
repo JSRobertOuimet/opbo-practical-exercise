@@ -7,8 +7,8 @@ const PageHeader = ({
 }) => {
     return (
         <header className="mb-8 text-center">
-            <h1 className="text-3xl">{pageTitle}</h1>
-            <p>{audience}</p>
+            <h1 className="mb-2 text-4xl">{pageTitle}</h1>
+            <p className="text">{audience}</p>
         </header>
     );
 };

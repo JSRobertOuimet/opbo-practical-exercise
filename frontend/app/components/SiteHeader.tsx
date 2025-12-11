@@ -25,9 +25,10 @@ const Navbar = ({ locale }: { locale: Locale }) => {
 
     return (
         <header>
-            <nav className="flex flex-col">
+            <nav className="fixed flex w-full flex-col border-b border-neutral-200 bg-white">
                 <div className="bg-neutral-100">
                     <div className="container mx-auto flex justify-end gap-2 px-4 py-1 text-sm">
+                        {/* <Link to="#">Admin</Link> */}
                         {locale === "en" ? (
                             <NavLink
                                 to={makeLocalePath("fr")}
@@ -55,7 +56,7 @@ const Navbar = ({ locale }: { locale: Locale }) => {
                             />
                             <img
                                 src="/logos/logo-brandname.svg"
-                                alt={t("nav.logoAlt")}
+                                alt={t("nav.logo_alt")}
                                 className="h-8"
                             />
                         </picture>
@@ -77,7 +78,7 @@ const Navbar = ({ locale }: { locale: Locale }) => {
                             }
                             end
                         >
-                            {t("nav.cateringServices")}
+                            {t("nav.catering_services")}
                         </NavLink>
                     </div>
                 </div>
