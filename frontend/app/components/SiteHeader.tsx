@@ -28,7 +28,6 @@ const SiteHeader = ({ locale }: { locale: Locale }) => {
             <nav className="fixed flex w-full flex-col border-b border-neutral-200 bg-white">
                 <div className="bg-neutral-100">
                     <div className="container mx-auto flex justify-end gap-2 px-4 py-1 text-sm">
-                        {/* <Link to="#">Admin</Link> */}
                         {locale === "en" ? (
                             <NavLink
                                 to={makeLocalePath("fr")}
