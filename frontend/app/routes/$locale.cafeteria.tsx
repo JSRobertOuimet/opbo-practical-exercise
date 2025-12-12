@@ -1,16 +1,18 @@
-import { useTranslation } from "react-i18next";
+// React hooks
+import { useEffect } from "react";
 import { useLoaderData } from "react-router";
-import type { Route } from "./+types/$locale.cafeteria";
-import {
-    DEFAULT_LOCALE,
-    getFixedT,
-    normalizeLocale,
-    type Locale,
-} from "~/i18n";
 
+// Internationalization
+import { useTranslation } from "react-i18next";
+import { DEFAULT_LOCALE, getFixedT, normalizeLocale } from "~/i18n";
+
+// Types
+import type { Route } from "./+types/$locale.cafeteria";
+import { type Locale } from "~/i18n";
+
+// Components
 import HeroImage from "~/components/HeroImage";
 import PageHeader from "~/components/PageHeader";
-import Notification from "~/components/Notification";
 
 type MenuOptionPrices = Record<string, number>;
 type LoaderData = {
@@ -20,13 +22,17 @@ type LoaderData = {
     menuOptionPrices: MenuOptionPrices;
 };
 
-function getIntlLocale(locale: Locale): string {
-    return locale === "fr" ? "fr-CA" : "en-CA";
-}
+// IDs reused for catering prefetch
+const CAFETERIA_IDS = [
+    "britannia",
+    "glebe",
+    "mitigomijokan",
+    "versant",
+] as const;
 
 export async function loader({ params }: Route.LoaderArgs) {
     const locale: Locale = normalizeLocale(params.locale);
-    const intlLocale = getIntlLocale(locale);
+    const intlLocale = locale === "fr" ? "fr-CA" : "en-CA";
 
     const date = new Date();
     const formattedDate = date.toLocaleDateString(intlLocale, {
@@ -38,29 +44,29 @@ export async function loader({ params }: Route.LoaderArgs) {
     const apiUrl = process.env.API_URL;
 
     if (!apiUrl) {
-        throw createJsonResponse(
-            { message: "The environment variable 'API_URL' is not defined." },
-            500,
-        );
+        return Response.json({
+            message: "The environment variable 'API_URL' is not defined.",
+            status: 500,
+        });
     }
 
     try {
         const response = await fetch(apiUrl);
 
         if (!response.ok) {
-            throw createJsonResponse(
-                { message: "Failed to fetch cafeteria menu." },
-                response.status,
-            );
+            return Response.json({
+                message: "Failed to fetch cafeteria menu.",
+                status: response.status,
+            });
         }
 
         const jsonData: unknown = await response.json();
 
         if (!isMenuOptionPrices(jsonData)) {
-            throw createJsonResponse(
-                { message: "Unexpected cafeteria menu payload." },
-                502,
-            );
+            return Response.json({
+                message: "Unexpected cafeteria menu payload.",
+                status: 502,
+            });
         }
 
         return {
@@ -70,30 +76,19 @@ export async function loader({ params }: Route.LoaderArgs) {
             menuOptionPrices: jsonData,
         };
     } catch (error) {
-        if (error instanceof Response) {
-            throw error;
+        return Response.json({
+            message: "Unable to load cafeteria menu.",
+            status: 502,
+        });
+    }
+
+    function isMenuOptionPrices(value: unknown): value is MenuOptionPrices {
+        if (typeof value !== "object" || value === null) {
+            return false;
         }
 
-        throw createJsonResponse(
-            { message: "Unable to load cafeteria menu." },
-            502,
-        );
+        return Object.values(value).every((item) => typeof item === "number");
     }
-}
-
-function isMenuOptionPrices(value: unknown): value is MenuOptionPrices {
-    if (typeof value !== "object" || value === null) {
-        return false;
-    }
-
-    return Object.values(value).every((item) => typeof item === "number");
-}
-
-function createJsonResponse(body: object, status: number): Response {
-    return new Response(JSON.stringify(body), {
-        status,
-        headers: { "Content-Type": "application/json" },
-    });
 }
 
 export function meta({ loaderData }: Route.MetaArgs) {
@@ -117,6 +112,16 @@ export default function Cafeteria() {
     const { t } = useTranslation();
     const { formattedDate, menuOptionPrices } = useLoaderData<LoaderData>();
 
+    useEffect(() => {
+        CAFETERIA_IDS.forEach((id) => {
+            // Best-effort prefetch; ignore errors since this is just warming
+            fetch(`/api/cafeteria-prices/${id}`).catch(() => {
+                // Intentionally swallow errors: the real flow will still
+                // handle failures on the catering page if needed.
+            });
+        });
+    }, []);
+
     const menuOptions = Object.entries(menuOptionPrices).map(
         ([key, price]) => ({
             key,
@@ -130,6 +135,7 @@ export default function Cafeteria() {
     return (
         <>
             <HeroImage src="/images/menu.jpeg" alt="" />
+
             <div className="container mx-auto px-4">
                 <PageHeader
                     pageTitle={t("pages.cafeteria.title")}
@@ -146,13 +152,11 @@ export default function Cafeteria() {
                     {menuOptions.map((option) => (
                         <div
                             key={option.key}
-                            className="rounded-sm border border-neutral-200 bg-white px-6 py-2 not-last:mb-8"
+                            className="rounded border border-neutral-200 bg-white px-6 pt-6 pb-4 not-last:mb-8"
                         >
-                            <div className="flex items-end justify-between">
-                                <h3 className="my-4 text-2xl font-bold">
-                                    {option.name}
-                                </h3>
-                                <p className="mb-4 text-2xl">{option.price}</p>
+                            <div className="mb-4 flex items-end justify-between text-2xl font-bold">
+                                <h3>{option.name}</h3>
+                                <p>{option.price}</p>
                             </div>
                             <p className="mb-4">{option.description}</p>
                             <details className="cursor-pointer">
@@ -166,7 +170,9 @@ export default function Cafeteria() {
                         </div>
                     ))}
 
-                    <Notification message={t("pages.cafeteria.notification")} />
+                    <p className="text-center text-sm text-balance">
+                        {t("pages.cafeteria.note")}
+                    </p>
                 </div>
             </div>
         </>

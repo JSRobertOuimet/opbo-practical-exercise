@@ -1,57 +1,111 @@
 {
+    "footer": {
+        "copyright": "© {{year}} xtrek. Tous droits réservés."
+    },
     "layout": {
         "title": "xtrek | Cafétéria"
     },
     "nav": {
-        "logo_alt": "Logo de xtrek.",
         "cafeteria": "Cafétéria",
         "catering_services": "Service traiteur",
         "english": "English",
-        "french": "Français"
-    },
-    "footer": {
-        "copyright": "© {{year}} xtrek. Tous droits réservés."
+        "french": "Français",
+        "logo_alt": "Logo de xtrek."
     },
     "pages": {
         "cafeteria": {
-            "title": "Cafétéria",
             "audience": "Pour les employés de xtrek",
             "heading": "Menu du {{date}}",
             "ingredients": "Liste des ingrédients",
-            "notification": "Veuillez noter que les prix sont mis à jour chaque dimanche matin.",
-            "meta_description": "Menu de la cafétéria de xtrek pour le {{date}}.",
             "menu_options": {
-                "mgb_bmc": {
-                    "name": "Bol Méditerranéen aux Céréales",
-                    "description": "Un bol coloré et nourrissant rempli de quinoa, de riz brun, de légumes frais et de feta, le tout nappé d’une sauce tahini citronnée. Idéal pour un repas léger mais copieux.",
-                    "ingredients": "Quinoa, riz brun, pois chiches, tomates cerises, concombre, olives kalamata, oignon rouge, fromage feta, persil frais, jus de citron, huile d’olive, ail, sel de mer, poivre noir, sumac, sauce tahini (tahini, jus de citron, ail, eau, sel)."
-                },
-                "tgc_cvt": {
-                    "name": "Curry Vert Thaï au Tofu",
-                    "description": "Un curry parfumé et crémeux à base de lait de coco, garni de légumes colorés et de tofu tendre, infusé d’épices thaïlandaises authentiques et servi avec du riz jasmin.",
-                    "ingredients": "Tofu ferme (coupé en cubes), lait de coco, pâte de curry vert (piments verts, citronnelle, galanga, ail, échalotes, zeste de combava, graines de coriandre, cumin, sel), pousses de bambou, courgette, poivrons rouges et jaunes, basilic thaï, sauce de poisson (ou sauce soja pour version végétarienne), sucre brun, jus de lime, riz jasmin (en accompagnement)."
-                },
                 "lvl_lvg": {
-                    "name": "Lasagne Végétarienne Gourmande",
                     "description": "Une lasagne généreuse, cuite au four, composée de légumes rôtis, d’une sauce tomate savoureuse et de trois fromages, pour un plat réconfortant plein de saveurs.",
-                    "ingredients": "Pâtes à lasagne, ricotta, mozzarella, parmesan, épinards, courgette, aubergine, champignons, poivrons, oignon, ail, huile d’olive, sauce tomate (tomates, basilic, origan, sel, poivre), basilic frais, muscade, œufs (dans le mélange de ricotta)."
+                    "ingredients": "Pâtes à lasagne, ricotta, mozzarella, parmesan, épinards, courgette, aubergine, champignons, poivrons, oignon, ail, huile d’olive, sauce tomate (tomates, basilic, origan, sel, poivre), basilic frais, muscade, œufs (dans le mélange de ricotta).",
+                    "name": "Lasagne Végétarienne Gourmande"
                 },
-                "pjs_sje": {
-                    "name": "Sandwich au Jackfruit Effiloché BBQ",
-                    "description": "Un sandwich végétal fumé, sucré et savoureux, avec du jackfruit tendre en sauce BBQ, garni de coleslaw croquant et servi dans un pain grillé.",
-                    "ingredients": "Jackfruit vert (en conserve, égoutté), sauce BBQ (purée de tomates, vinaigre, mélasse, sucre brun, moutarde, poudre d’ail, poudre d’oignon, paprika fumé), oignon, ail, huile d’olive, vinaigre de cidre, mélange de coleslaw (chou, carottes), sauce coleslaw (mayonnaise, vinaigre, sucre, graines de céleri, sel), pains à sandwich de blé entier, cornichons, coriandre fraîche (garniture facultative)."
+                "mgb_bmc": {
+                    "description": "Un bol coloré et nourrissant rempli de quinoa, de riz brun, de légumes frais et de feta, le tout nappé d’une sauce tahini citronnée. Idéal pour un repas léger mais copieux.",
+                    "ingredients": "Quinoa, riz brun, pois chiches, tomates cerises, concombre, olives kalamata, oignon rouge, fromage feta, persil frais, jus de citron, huile d’olive, ail, sel de mer, poivre noir, sumac, sauce tahini (tahini, jus de citron, ail, eau, sel).",
+                    "name": "Bol Méditerranéen aux Céréales"
                 },
                 "mod_mdj": {
-                    "name": "Menu du jour",
                     "description": "Découvrez les sélections fraîches et savoureuses du jour, préparées par nos chefs à partir d’ingrédients de saison et de produits locaux.",
-                    "ingredients": "La liste des ingrédients est disponible sur demande. Veuillez consulter notre personnel si vous avez des préoccupations alimentaires ou des allergies."
+                    "ingredients": "La liste des ingrédients est disponible sur demande. Veuillez consulter notre personnel si vous avez des préoccupations alimentaires ou des allergies.",
+                    "name": "Menu du jour"
+                },
+                "pjs_sje": {
+                    "description": "Un sandwich végétal fumé, sucré et savoureux, avec du jackfruit tendre en sauce BBQ, garni de coleslaw croquant et servi dans un pain grillé.",
+                    "ingredients": "Jackfruit vert (en conserve, égoutté), sauce BBQ (purée de tomates, vinaigre, mélasse, sucre brun, moutarde, poudre d’ail, poudre d’oignon, paprika fumé), oignon, ail, huile d’olive, vinaigre de cidre, mélange de coleslaw (chou, carottes), sauce coleslaw (mayonnaise, vinaigre, sucre, graines de céleri, sel), pains à sandwich de blé entier, cornichons, coriandre fraîche (garniture facultative).",
+                    "name": "Sandwich au Jackfruit Effiloché BBQ"
+                },
+                "tgc_cvt": {
+                    "description": "Un curry parfumé et crémeux à base de lait de coco, garni de légumes colorés et de tofu tendre, infusé d’épices thaïlandaises authentiques et servi avec du riz jasmin.",
+                    "ingredients": "Tofu ferme (coupé en cubes), lait de coco, pâte de curry vert (piments verts, citronnelle, galanga, ail, échalotes, zeste de combava, graines de coriandre, cumin, sel), pousses de bambou, courgette, poivrons rouges et jaunes, basilic thaï, sauce de poisson (ou sauce soja pour version végétarienne), sucre brun, jus de lime, riz jasmin (en accompagnement).",
+                    "name": "Curry Vert Thaï au Tofu"
                 }
-            }
+            },
+            "meta_description": "Menu de la cafétéria de xtrek pour le {{date}}.",
+            "note": "Veuillez noter que les prix sont mis à jour chaque dimanche matin.",
+            "title": "Cafétéria"
         },
         "catering_services": {
-            "title": "Service traiteur",
             "audience": "Pour le grand public",
-            "meta_description": "Service traiteur de xtrek."
+            "instructions": "Sélectionnez votre emplacement préféré, car la disponibilité peut varier d’un site à l’autre.",
+            "loading_menu_options": "Chargement des options de menu...",
+            "location_placeholder": "Sélectionnez un emplacement",
+            "locations": {
+                "britannia": "Britannia",
+                "glebe": "Glebe",
+                "mitigomijokan": "Mitigomijokan",
+                "versant": "Versant"
+            },
+            "menu_options": {
+                "dietary_options": {
+                    "gluten_free": "Sans gluten",
+                    "nut_free": "Sans noix",
+                    "vegan": "Végétalien",
+                    "vegetarian": "Végétarien"
+                },
+                "not_available": "Le {{meal}} n’est pas disponible pour le moment.",
+                "premium": {
+                    "breakfast": {
+                        "description": "Buffet chaud, jus de fruits frais",
+                        "name": "Déjeuner"
+                    },
+                    "dinner": {
+                        "description": "Steak, fruits de mer, accompagnements gastronomiques",
+                        "name": "Souper"
+                    },
+                    "lunch": {
+                        "description": "Bols de céréales, wraps, smoothies",
+                        "name": "Dîner"
+                    }
+                },
+                "standard": {
+                    "breakfast": {
+                        "description": "Pâtisseries, yogourt, jus",
+                        "name": "Déjeuner"
+                    },
+                    "dinner": {
+                        "description": "Pâtes, poulet grillé, légumes",
+                        "name": "Souper"
+                    },
+                    "lunch": {
+                        "description": "Sandwichs, salades, fruits",
+                        "name": "Dîner"
+                    }
+                },
+                "tab_premium_label": "Haut de gamme",
+                "tab_standard_label": "Stardard",
+                "tabs_label": "Options de menu"
+            },
+            "meta_description": "Service traiteur de xtrek.",
+            "note": "Veuillez noter que les prix et la disponibilité sont mis à jour chaque dimanche soir. Veuillez contacter Bob pour connaître les prix. Des options diététiques sont offertes sur demande.",
+            "regions": {
+                "gatineau": "Gatineau",
+                "ottawa": "Ottawa"
+            },
+            "title": "Service traiteur"
         }
     }
 }

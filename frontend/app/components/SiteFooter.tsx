@@ -10,7 +10,7 @@ const Footer = () => {
                 <img
                     src="/logos/logo-full.svg"
                     alt={t("nav.logo_alt")}
-                    className="mb-8 size-32"
+                    className="mb-8 size-24"
                 />
                 {t("footer.copyright", { year })}
             </div>

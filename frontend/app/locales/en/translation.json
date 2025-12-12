@@ -1,57 +1,111 @@
 {
+    "footer": {
+        "copyright": "© {{year}} xtrek. All rights reserved."
+    },
     "layout": {
         "title": "xtrek | Cafeteria"
     },
     "nav": {
-        "logo_alt": "Logo of xtrek.",
         "cafeteria": "Cafeteria",
         "catering_services": "Catering Services",
         "english": "English",
-        "french": "Français"
-    },
-    "footer": {
-        "copyright": "© {{year}} xtrek. All rights reserved."
+        "french": "Français",
+        "logo_alt": "Logo of xtrek."
     },
     "pages": {
         "cafeteria": {
-            "title": "Cafeteria",
             "audience": "For xtrek employees",
             "heading": "Menu for {{date}}",
             "ingredients": "List of ingredients",
-            "notification": "Please note that prices are updated every Sunday morning.",
-            "meta_description": "xtrek’s cafeteria menu for {{date}}.",
             "menu_options": {
-                "mgb_bmc": {
-                    "name": "Mediterranean Grain Bowl",
-                    "description": "A vibrant and wholesome bowl packed with quinoa, brown rice, fresh vegetables, and tangy feta, topped with a zesty tahini dressing. Perfect for a light yet satisfying lunch.",
-                    "ingredients": "Quinoa, brown rice, chickpeas, cherry tomatoes, cucumber, kalamata olives, red onion, feta cheese, fresh parsley, lemon juice, olive oil, garlic, sea salt, black pepper, sumac, tahini dressing (tahini, lemon juice, garlic, water, salt)."
-                },
-                "tgc_cvt": {
-                    "name": "Thai Green Curry with Tofu",
-                    "description": "A fragrant and creamy coconut-based curry loaded with colorful vegetables and tender tofu, infused with authentic Thai spices and served with jasmine rice.",
-                    "ingredients": "Tofu (firm, cubed), coconut milk, green curry paste (green chilies, lemongrass, galangal, garlic, shallots, kaffir lime peel, coriander seeds, cumin, salt), bamboo shoots, zucchini, bell peppers (red and yellow), Thai basil, fish sauce (or soy sauce for vegetarian option), brown sugar, lime juice, jasmine rice (served on the side)."
-                },
                 "lvl_lvg": {
-                    "name": "Loaded Veggie Lasagna",
                     "description": "A hearty, oven-baked lasagna layered with roasted vegetables, rich tomato sauce, and a trio of cheeses, delivering comfort and flavor in every bite.",
-                    "ingredients": "Lasagna noodles, ricotta cheese, mozzarella cheese, parmesan cheese, spinach, zucchini, eggplant, mushrooms, bell peppers, onion, garlic, olive oil, tomato sauce (tomatoes, basil, oregano, salt, pepper), fresh basil, nutmeg, eggs (in ricotta mix)."
+                    "ingredients": "Lasagna noodles, ricotta cheese, mozzarella cheese, parmesan cheese, spinach, zucchini, eggplant, mushrooms, bell peppers, onion, garlic, olive oil, tomato sauce (tomatoes, basil, oregano, salt, pepper), fresh basil, nutmeg, eggs (in ricotta mix).",
+                    "name": "Loaded Veggie Lasagna"
                 },
-                "pjs_sje": {
-                    "name": "BBQ Pulled Jackfruit Sandwich",
-                    "description": "A smoky, sweet, and savory plant-based sandwich featuring tender jackfruit in BBQ sauce, topped with crunchy coleslaw and served on a toasted bun.",
-                    "ingredients": "Young green jackfruit (canned, drained), bbq sauce (tomato paste, vinegar, molasses, brown sugar, mustard, garlic powder, onion powder, smoked paprika), onion, garlic, olive oil, apple cider vinegar, coleslaw mix (cabbage, carrots), coleslaw dressing (mayonnaise, vinegar, sugar, celery seed, salt), whole wheat sandwich buns, pickles, fresh cilantro (optional garnish)."
+                "mgb_bmc": {
+                    "description": "A vibrant and wholesome bowl packed with quinoa, brown rice, fresh vegetables, and tangy feta, topped with a zesty tahini dressing. Perfect for a light yet satisfying lunch.",
+                    "ingredients": "Quinoa, brown rice, chickpeas, cherry tomatoes, cucumber, kalamata olives, red onion, feta cheese, fresh parsley, lemon juice, olive oil, garlic, sea salt, black pepper, sumac, tahini dressing (tahini, lemon juice, garlic, water, salt).",
+                    "name": "Mediterranean Grain Bowl"
                 },
                 "mod_mdj": {
-                    "name": "Menu of the day",
                     "description": "Discover today’s fresh and flavorful selections, crafted by our chefs using seasonal ingredients and local produce.",
-                    "ingredients": "Ingredients are available upon request. Please ask our staff if you have any dietary concerns or allergies."
+                    "ingredients": "Ingredients are available upon request. Please ask our staff if you have any dietary concerns or allergies.",
+                    "name": "Menu of the day"
+                },
+                "pjs_sje": {
+                    "description": "A smoky, sweet, and savory plant-based sandwich featuring tender jackfruit in BBQ sauce, topped with crunchy coleslaw and served on a toasted bun.",
+                    "ingredients": "Young green jackfruit (canned, drained), bbq sauce (tomato paste, vinegar, molasses, brown sugar, mustard, garlic powder, onion powder, smoked paprika), onion, garlic, olive oil, apple cider vinegar, coleslaw mix (cabbage, carrots), coleslaw dressing (mayonnaise, vinegar, sugar, celery seed, salt), whole wheat sandwich buns, pickles, fresh cilantro (optional garnish).",
+                    "name": "BBQ Pulled Jackfruit Sandwich"
+                },
+                "tgc_cvt": {
+                    "description": "A fragrant and creamy coconut-based curry loaded with colorful vegetables and tender tofu, infused with authentic Thai spices and served with jasmine rice.",
+                    "ingredients": "Tofu (firm, cubed), coconut milk, green curry paste (green chilies, lemongrass, galangal, garlic, shallots, kaffir lime peel, coriander seeds, cumin, salt), bamboo shoots, zucchini, bell peppers (red and yellow), Thai basil, fish sauce (or soy sauce for vegetarian option), brown sugar, lime juice, jasmine rice (served on the side).",
+                    "name": "Thai Green Curry with Tofu"
                 }
-            }
+            },
+            "meta_description": "xtrek’s cafeteria menu for {{date}}.",
+            "note": "Please note that prices are updated every Sunday morning.",
+            "title": "Cafeteria"
         },
         "catering_services": {
-            "title": "Catering Services",
             "audience": "For the general public",
-            "meta_description": "xtrek's catering services."
+            "instructions": "Select your preferred location as availability at each site can vary.",
+            "loading_menu_options": "Loading menu options...",
+            "location_placeholder": "Select a location",
+            "locations": {
+                "britannia": "Britannia",
+                "glebe": "Glebe",
+                "mitigomijokan": "Mitigomijokan",
+                "versant": "Versant"
+            },
+            "menu_options": {
+                "dietary_options": {
+                    "gluten_free": "Gluten-Free",
+                    "nut_free": "Nut-Free",
+                    "vegan": "Vegan",
+                    "vegetarian": "Vegetarian"
+                },
+                "not_available": "The {{meal}} is not available at the moment.",
+                "premium": {
+                    "breakfast": {
+                        "description": "Hot Breakfast Buffet, Fresh Juice",
+                        "name": "Breakfast"
+                    },
+                    "dinner": {
+                        "description": "Steak, Seafood, Gourmet Sides",
+                        "name": "Dinner"
+                    },
+                    "lunch": {
+                        "description": "Grain Bowls, Wraps, Smoothies",
+                        "name": "Lunch"
+                    }
+                },
+                "standard": {
+                    "breakfast": {
+                        "description": "Pastries, Yogurt, Juice",
+                        "name": "Breakfast"
+                    },
+                    "dinner": {
+                        "description": "Pasta, Grilled Chicken, Vegetables",
+                        "name": "Dinner"
+                    },
+                    "lunch": {
+                        "description": "Sandwiches, Salads, Fruit",
+                        "name": "Lunch"
+                    }
+                },
+                "tab_premium_label": "Premium",
+                "tab_standard_label": "Stardard",
+                "tabs_label": "Menu options"
+            },
+            "meta_description": "xtrek's catering services.",
+            "note": "Please note that prices and availability are updated every Sunday night. Ask Bob for prices. Dietary options are available on-demand.",
+            "regions": {
+                "gatineau": "Gatineau",
+                "ottawa": "Ottawa"
+            },
+            "title": "Catering Services"
         }
     }
 }

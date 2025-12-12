@@ -1,6 +1,6 @@
 const Notification = ({ message }: { message: string }) => {
     return (
-        <p className="mx-auto mt-6 mb-8 w-fit font-bold text-balance">
+        <p className="mx-auto mt-6 mb-8 w-fit rounded border border-amber-300 bg-amber-100 p-4 font-bold text-amber-900">
             {message}
         </p>
     );

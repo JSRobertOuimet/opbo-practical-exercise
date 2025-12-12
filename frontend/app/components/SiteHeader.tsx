@@ -32,14 +32,14 @@ const Navbar = ({ locale }: { locale: Locale }) => {
                         {locale === "en" ? (
                             <NavLink
                                 to={makeLocalePath("fr")}
-                                className="outline-offset-2"
+                                className="outline-offset-3"
                             >
                                 {t("nav.french")}
                             </NavLink>
                         ) : (
                             <NavLink
                                 to={makeLocalePath("en")}
-                                className="outline-offset-2"
+                                className="outline-offset-3"
                             >
                                 {t("nav.english")}
                             </NavLink>

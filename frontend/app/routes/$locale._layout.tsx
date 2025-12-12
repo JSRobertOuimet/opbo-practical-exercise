@@ -1,15 +1,21 @@
+// React hooks
 import { Outlet, useLoaderData } from "react-router";
-import type { Route } from "./+types/$locale._layout";
-import SiteHeader from "../components/SiteHeader";
-import SiteFooter from "../components/SiteFooter";
+
+// Internationalization
 import {
     DEFAULT_LOCALE,
     getFixedT,
     isSupportedLocale,
-    type Locale,
 } from "~/i18n";
 
+// Types
+import type { Route } from "./+types/$locale._layout";
+import { type Locale } from "~/i18n";
 type LoaderData = { locale: Locale };
+
+// Components
+import SiteHeader from "../components/SiteHeader";
+import SiteFooter from "../components/SiteFooter";
 
 export function loader({ params }: Route.LoaderArgs) {
     const locale = params.locale;
