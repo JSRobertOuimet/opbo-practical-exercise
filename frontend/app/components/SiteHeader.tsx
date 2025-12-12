@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 import { Link, NavLink, useLocation } from "react-router";
 import type { Locale } from "~/i18n";
 
-const Navbar = ({ locale }: { locale: Locale }) => {
+const SiteHeader = ({ locale }: { locale: Locale }) => {
     const { t } = useTranslation();
     const location = useLocation();
 
@@ -87,4 +87,4 @@ const Navbar = ({ locale }: { locale: Locale }) => {
     );
 };
 
-export default Navbar;
+export default SiteHeader;

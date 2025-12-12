@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 
-const Footer = () => {
+const SiteFooter = () => {
     const { t } = useTranslation();
     const year = new Date().getFullYear();
 
@@ -18,4 +18,4 @@ const Footer = () => {
     );
 };
 
-export default Footer;
+export default SiteFooter;
