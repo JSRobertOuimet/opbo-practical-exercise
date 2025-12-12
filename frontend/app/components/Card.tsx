@@ -1,5 +1,5 @@
 // Internationalization
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 
 // Types
 import type { MenuMeal } from "~/types/types";
@@ -11,6 +11,8 @@ type CardProps = {
 import Tag from "./Tag";
 
 const Card = ({ meal }: CardProps) => {
+    const { t } = useTranslation();
+
     const formatPrice = (price: number | null) => {
         if (price == null) return;
         return `$${price}`;
