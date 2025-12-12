@@ -160,7 +160,7 @@ export default function Cafeteria() {
                             </div>
                             <p className="mb-4">{option.description}</p>
                             <details className="cursor-pointer">
-                                <summary className="mb-4 text-sm">
+                                <summary className="mb-4 text-sm outline-offset-8">
                                     {t("pages.cafeteria.ingredients")}
                                 </summary>
                                 <p className="mb-4 text-sm">
