@@ -2,7 +2,7 @@
 import { redirect } from "react-router";
 
 // Internationalization
-import { detectLocaleFromHeader } from "~/i18n";
+import { detectLocaleFromHeader } from "~/utils/i18n";
 
 // Types
 import type { Route } from "./+types/_index";

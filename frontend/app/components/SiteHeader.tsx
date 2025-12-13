@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import { Link, NavLink, useLocation } from "react-router";
 
 // Types
-import type { Locale } from "~/i18n";
+import type { Locale } from "~/utils/i18n";
 
 type SiteHeaderProps = {
     locale: Locale;
