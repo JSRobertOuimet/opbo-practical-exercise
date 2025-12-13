@@ -308,18 +308,12 @@ export default function CateringServices() {
                                 >
                                     {mealOrder.map((mealType) => {
                                         const meal = menuForTier[mealType];
-                                        const isStandard =
-                                            selectedTier === "standard";
 
-                                        return isStandard ? (
+                                        return (
                                             <Card
                                                 key={`${selectedTier}-${mealType}`}
                                                 meal={meal}
-                                            />
-                                        ) : (
-                                            <Card
-                                                key={`${selectedTier}-${mealType}`}
-                                                meal={meal}
+                                                headingLevel={2}
                                             />
                                         );
                                     })}
