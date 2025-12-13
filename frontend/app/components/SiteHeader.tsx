@@ -7,7 +7,11 @@ import { Link, NavLink, useLocation } from "react-router";
 // Types
 import type { Locale } from "~/i18n";
 
-const SiteHeader = ({ locale }: { locale: Locale }) => {
+type SiteHeaderProps = {
+    locale: Locale;
+};
+
+const SiteHeader = ({ locale }: SiteHeaderProps) => {
     const { t } = useTranslation();
     const location = useLocation();
 

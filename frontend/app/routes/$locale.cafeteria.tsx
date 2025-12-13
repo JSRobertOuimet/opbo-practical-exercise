@@ -6,7 +6,7 @@ import { useLoaderData } from "react-router";
 import { useTranslation } from "react-i18next";
 import { DEFAULT_LOCALE, getFixedT, normalizeLocale } from "~/i18n";
 
-// Utils and Constants
+// Constants
 import { CAFETERIA_IDS } from "~/constants/cafeterias";
 
 // Types
@@ -133,8 +133,8 @@ export default function Cafeteria() {
 
             <div className="container mx-auto px-4">
                 <PageHeader
-                    pageTitle={t("pages.cafeteria.title")}
-                    audience={t("pages.cafeteria.audience")}
+                    title={t("pages.cafeteria.title")}
+                    subtitle={t("pages.cafeteria.audience")}
                 />
 
                 <div className="lg:mx-auto lg:w-2/3 xl:w-1/2">

@@ -1,4 +1,10 @@
-const HeroImage = ({ src, alt }: { src: string; alt: string }) => {
+// Types
+type HeroImageProps = {
+    src: string;
+    alt: string;
+};
+
+const HeroImage = ({ src, alt }: HeroImageProps) => {
     return (
         <img
             src={src}

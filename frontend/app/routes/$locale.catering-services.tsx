@@ -198,8 +198,8 @@ export default function CateringServices() {
 
             <div className="container mx-auto px-4">
                 <PageHeader
-                    pageTitle={t("pages.catering_services.title")}
-                    audience={t("pages.catering_services.audience")}
+                    title={t("pages.catering_services.title")}
+                    subtitle={t("pages.catering_services.audience")}
                 />
 
                 <div className="lg:mx-auto lg:w-2/3 xl:w-1/2">

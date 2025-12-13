@@ -1,4 +1,4 @@
-// Utils and Constants
+// Constants
 import { CACHE_LIFESPAN } from "~/constants/cache";
 
 // Types
