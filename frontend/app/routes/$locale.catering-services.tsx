@@ -155,13 +155,15 @@ export default function CateringServices() {
 
     const isLoadingPrices =
         hasSelectedLocation &&
-        pricesFetcher.state !== "idle" &&
-        (!pricesFetcher.data || pricesFetcher.data.id !== selectedLocationId);
+        (!pricesFetcher.data ||
+            pricesFetcher.data.id !== selectedLocationId ||
+            pricesFetcher.state !== "idle");
 
     const fetchedPricesForSelectedLocation =
         hasSelectedLocation &&
         pricesFetcher.data &&
-        pricesFetcher.data.id === selectedLocationId
+        pricesFetcher.data.id === selectedLocationId &&
+        pricesFetcher.state === "idle"
             ? pricesFetcher.data.prices
             : null;
 
