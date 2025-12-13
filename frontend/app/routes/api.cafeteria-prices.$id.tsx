@@ -9,7 +9,7 @@ type PricesByMeal = Record<MealType, number | null>;
 
 type PricesByTier = Record<MealTier, PricesByMeal>;
 
-type RawPricesResponse = {
+type JsonPricesResponse = {
     standard_breakfast: number | null;
     standard_lunch: number | null;
     standard_dinner: number | null;
@@ -31,14 +31,14 @@ export async function loader({ params, request }: Route.LoaderArgs) {
 
     if (!apiUrl) {
         return Response.json(
-            { message: "API_URL is not defined." },
+            { message: "Environment variable 'API_URL' is not defined." },
             { status: 500 },
         );
     }
 
     if (!cafeteriaId) {
         return Response.json(
-            { message: "Missing cafeteria id." },
+            { message: "cafeteria id is missing." },
             { status: 400 },
         );
     }
@@ -63,11 +63,11 @@ export async function loader({ params, request }: Route.LoaderArgs) {
             body: JSON.stringify({ cafeteria_id: cafeteriaId }),
             signal: request.signal,
         });
-    } catch (err: any) {
-        if (err?.name === "AbortError") {
+    } catch (error: any) {
+        if (error?.name === "AbortError") {
             return new Response(null, { status: 499 });
         }
-        throw err;
+        throw error;
     }
 
     if (!response.ok) {
@@ -77,21 +77,21 @@ export async function loader({ params, request }: Route.LoaderArgs) {
         );
     }
 
-    const raw = (await response.json()) as RawPricesResponse;
+    const json = (await response.json()) as JsonPricesResponse;
 
     const toPrice = (v: number | null | undefined) =>
         typeof v === "number" && !Number.isNaN(v) ? v : null;
 
     const prices: PricesByTier = {
         standard: {
-            breakfast: toPrice(raw.standard_breakfast),
-            lunch: toPrice(raw.standard_lunch),
-            dinner: toPrice(raw.standard_dinner),
+            breakfast: toPrice(json.standard_breakfast),
+            lunch: toPrice(json.standard_lunch),
+            dinner: toPrice(json.standard_dinner),
         },
         premium: {
-            breakfast: toPrice(raw.premium_breakfast),
-            lunch: toPrice(raw.premium_lunch),
-            dinner: toPrice(raw.premium_dinner),
+            breakfast: toPrice(json.premium_breakfast),
+            lunch: toPrice(json.premium_lunch),
+            dinner: toPrice(json.premium_dinner),
         },
     };
 
