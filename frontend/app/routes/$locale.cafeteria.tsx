@@ -24,6 +24,7 @@ type LoaderData = {
 // Components
 import HeroImage from "~/components/HeroImage";
 import PageHeader from "~/components/PageHeader";
+import Card from "~/components/Card";
 
 export async function loader({ params }: Route.LoaderArgs) {
     const locale: Locale = normalizeLocale(params.locale);
@@ -123,7 +124,7 @@ export default function Cafeteria() {
             name: t(`pages.cafeteria.menu_options.${key}.name`),
             description: t(`pages.cafeteria.menu_options.${key}.description`),
             ingredients: t(`pages.cafeteria.menu_options.${key}.ingredients`),
-            price: `$${price.toFixed(2)}`,
+            price: price,
         }),
     );
 
@@ -145,24 +146,14 @@ export default function Cafeteria() {
                     </h2>
 
                     {menuOptions.map((option) => (
-                        <div
+                        <Card
                             key={option.key}
-                            className="rounded border border-neutral-200 bg-white px-6 pt-6 pb-4 not-last:mb-8"
-                        >
-                            <div className="mb-4 flex items-end justify-between text-2xl font-bold">
-                                <h3>{option.name}</h3>
-                                <p>{option.price}</p>
-                            </div>
-                            <p className="mb-4">{option.description}</p>
-                            <details className="cursor-pointer">
-                                <summary className="mb-4 text-sm outline-offset-8">
-                                    {t("pages.cafeteria.ingredients")}
-                                </summary>
-                                <p className="mb-4 text-sm">
-                                    {option.ingredients}
-                                </p>
-                            </details>
-                        </div>
+                            name={option.name}
+                            description={option.description}
+                            ingredients={option.ingredients}
+                            price={option.price}
+                            headingLevel={3}
+                        />
                     ))}
 
                     <p className="text-center text-sm text-balance">
