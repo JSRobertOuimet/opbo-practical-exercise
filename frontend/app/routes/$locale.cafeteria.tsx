@@ -110,10 +110,8 @@ export default function Cafeteria() {
 
     useEffect(() => {
         CAFETERIA_IDS.forEach((id) => {
-            // Best-effort prefetch; ignore errors since this is just warming
-            fetch(`/api/cafeteria-prices/${id}`).catch(() => {
-                // Intentionally swallow errors: the real flow will still
-                // handle failures on the catering page if needed.
+            fetch(`/api/cafeteria-prices/${id}`).catch((error) => {
+                console.error(error);
             });
         });
     }, []);
@@ -130,7 +128,7 @@ export default function Cafeteria() {
 
     return (
         <>
-            <HeroImage src="/images/menu.jpeg" alt="" />
+            <HeroImage src="/images/menu.jpg" alt="" />
 
             <div className="container mx-auto px-4">
                 <PageHeader

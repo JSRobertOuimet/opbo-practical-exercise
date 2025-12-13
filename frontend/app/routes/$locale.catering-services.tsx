@@ -196,7 +196,7 @@ export default function CateringServices() {
 
     return (
         <>
-            <HeroImage src="/images/catering.jpeg" alt="" />
+            <HeroImage src="/images/catering.jpg" alt="" />
 
             <div className="container mx-auto px-4">
                 <PageHeader
