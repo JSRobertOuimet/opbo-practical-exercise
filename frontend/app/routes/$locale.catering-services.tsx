@@ -6,17 +6,19 @@ import { useSearchParams, useFetcher } from "react-router";
 import { useTranslation } from "react-i18next";
 import { DEFAULT_LOCALE, getFixedT, normalizeLocale } from "~/i18n";
 
+// Utils
+import { createBaseMenu } from "~/utils/menuFactory";
+
 // Types
 import type { Route } from "./+types/$locale.catering-services";
-import { type Locale } from "~/i18n";
-import type { MealTier, MealType, MenuMeal } from "~/types/types";
+import type { Locale } from "~/i18n";
+import type { MealTier, MealType, MenuByMeal } from "~/types/types";
 
-type MenusByMeal = Record<MealType, MenuMeal>;
-
-type MenusByTier = Record<MealTier, MenusByMeal>;
+type LoaderData = {
+    locale: Locale;
+};
 
 type PricesByMeal = Record<MealType, number | null>;
-
 type PricesByTier = Record<MealTier, PricesByMeal>;
 
 type CafeteriaMeta = {
@@ -25,15 +27,18 @@ type CafeteriaMeta = {
     region: string;
 };
 
-type LoaderData = {
-    locale: Locale;
-};
-
 type PricesFetcherData = {
     id: string;
     prices: PricesByTier;
     cached: boolean;
 };
+
+// Components
+import HeroImage from "~/components/HeroImage";
+import PageHeader from "~/components/PageHeader";
+import Notification from "~/components/Notification";
+import TabButton from "~/components/TabButton";
+import Card from "~/components/Card";
 
 export async function loader({ params }: Route.LoaderArgs) {
     const locale: Locale = normalizeLocale(params.locale);
@@ -42,13 +47,6 @@ export async function loader({ params }: Route.LoaderArgs) {
         locale,
     };
 }
-
-// Components
-import HeroImage from "~/components/HeroImage";
-import PageHeader from "~/components/PageHeader";
-import Notification from "~/components/Notification";
-import TabButton from "~/components/TabButton";
-import Card from "~/components/Card";
 
 export function meta({ loaderData }: Route.MetaArgs) {
     const data = loaderData as LoaderData;
@@ -167,131 +165,25 @@ export default function CateringServices() {
             ? pricesFetcher.data.prices
             : null;
 
-    const menusForTier: MenusByMeal | null = useMemo(() => {
+    const menuForTier: MenuByMeal | null = useMemo(() => {
         if (!hasSelectedLocation || isLoadingPrices) return null;
 
-        const base: MenusByTier = {
-            standard: {
-                breakfast: {
-                    name: t(
-                        "pages.catering_services.menu_options.standard.breakfast.name",
-                    ),
-                    description: t(
-                        "pages.catering_services.menu_options.standard.breakfast.description",
-                    ),
-                    dietaryOptions: [
-                        t(
-                            "pages.catering_services.menu_options.dietary_options.vegan",
-                        ),
-                        t(
-                            "pages.catering_services.menu_options.dietary_options.vegetarian",
-                        ),
-                    ],
-                    price: null,
-                },
-                lunch: {
-                    name: t(
-                        "pages.catering_services.menu_options.standard.lunch.name",
-                    ),
-                    description: t(
-                        "pages.catering_services.menu_options.standard.lunch.description",
-                    ),
-                    dietaryOptions: [
-                        t(
-                            "pages.catering_services.menu_options.dietary_options.nut_free",
-                        ),
-                        t(
-                            "pages.catering_services.menu_options.dietary_options.vegetarian",
-                        ),
-                    ],
-                    price: null,
-                },
-                dinner: {
-                    name: t(
-                        "pages.catering_services.menu_options.standard.dinner.name",
-                    ),
-                    description: t(
-                        "pages.catering_services.menu_options.standard.dinner.description",
-                    ),
-                    dietaryOptions: [
-                        t(
-                            "pages.catering_services.menu_options.dietary_options.nut_free",
-                        ),
-                        t(
-                            "pages.catering_services.menu_options.dietary_options.vegetarian",
-                        ),
-                    ],
-                    price: null,
-                },
-            },
-            premium: {
-                breakfast: {
-                    name: t(
-                        "pages.catering_services.menu_options.premium.breakfast.name",
-                    ),
-                    description: t(
-                        "pages.catering_services.menu_options.premium.breakfast.description",
-                    ),
-                    dietaryOptions: [
-                        t(
-                            "pages.catering_services.menu_options.dietary_options.nut_free",
-                        ),
-                        t(
-                            "pages.catering_services.menu_options.dietary_options.gluten_free",
-                        ),
-                    ],
-                    price: null,
-                },
-                lunch: {
-                    name: t(
-                        "pages.catering_services.menu_options.premium.lunch.name",
-                    ),
-                    description: t(
-                        "pages.catering_services.menu_options.premium.lunch.description",
-                    ),
-                    dietaryOptions: [
-                        t(
-                            "pages.catering_services.menu_options.dietary_options.vegan",
-                        ),
-                        t(
-                            "pages.catering_services.menu_options.dietary_options.nut_free",
-                        ),
-                        t(
-                            "pages.catering_services.menu_options.dietary_options.gluten_free",
-                        ),
-                        t(
-                            "pages.catering_services.menu_options.dietary_options.vegetarian",
-                        ),
-                    ],
-                    price: null,
-                },
-                dinner: {
-                    name: t(
-                        "pages.catering_services.menu_options.premium.dinner.name",
-                    ),
-                    description: t(
-                        "pages.catering_services.menu_options.premium.dinner.description",
-                    ),
-                    dietaryOptions: [
-                        t(
-                            "pages.catering_services.menu_options.dietary_options.gluten_free",
-                        ),
-                    ],
-                    price: null,
-                },
-            },
-        };
+        const baseMenu = createBaseMenu(t);
 
         if (fetchedPricesForSelectedLocation) {
-            (["standard", "premium"] as const).forEach((tier) => {
-                (["breakfast", "lunch", "dinner"] as const).forEach((meal) => {
-                    base[tier][meal].price =
-                        fetchedPricesForSelectedLocation[tier][meal];
-                });
+            (["standard", "premium"] as const).forEach((mealTier) => {
+                (["breakfast", "lunch", "dinner"] as const).forEach(
+                    (mealType) => {
+                        baseMenu[mealTier][mealType].price =
+                            fetchedPricesForSelectedLocation[mealTier][
+                                mealType
+                            ];
+                    },
+                );
             });
         }
 
-        return base[selectedTier];
+        return baseMenu[selectedTier];
     }, [
         t,
         hasSelectedLocation,
@@ -407,7 +299,7 @@ export default function CateringServices() {
                                 />
                             </div>
 
-                            {menusForTier && (
+                            {menuForTier && (
                                 <div
                                     id={`tabpanel-${selectedTier}`}
                                     role="tabpanel"
@@ -415,7 +307,7 @@ export default function CateringServices() {
                                     className="grid"
                                 >
                                     {mealOrder.map((mealType) => {
-                                        const meal = menusForTier[mealType];
+                                        const meal = menuForTier[mealType];
                                         const isStandard =
                                             selectedTier === "standard";
 

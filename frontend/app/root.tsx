@@ -1,4 +1,7 @@
+// React hooks
 import { useEffect } from "react";
+
+// React Router
 import {
     isRouteErrorResponse,
     Links,
@@ -8,10 +11,15 @@ import {
     ScrollRestoration,
     useMatches,
 } from "react-router";
-import type { Route } from "./+types/root";
 
+// Internationalization
 import { I18nextProvider } from "react-i18next";
 import i18n, { normalizeLocale, type Locale } from "app/i18n";
+
+// Types
+import type { Route } from "./+types/root";
+
+// Styles
 import "./app.css";
 
 export const links: Route.LinksFunction = () => [

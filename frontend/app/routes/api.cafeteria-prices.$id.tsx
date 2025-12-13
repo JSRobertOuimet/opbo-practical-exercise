@@ -1,3 +1,6 @@
+// Utils and Constants
+import { CACHE_LIFESPAN } from "~/constants/cache";
+
 // Types
 import type { Route } from "./+types/api.cafeteria-prices.$id";
 import type { MealTier, MealType } from "~/types/types";
@@ -20,7 +23,6 @@ type CacheEntry = {
     cachedAt: number;
 };
 
-import { CACHE_LIFESPAN } from "~/constants/cache";
 const cache = new Map<string, CacheEntry>();
 
 export async function loader({ params, request }: Route.LoaderArgs) {

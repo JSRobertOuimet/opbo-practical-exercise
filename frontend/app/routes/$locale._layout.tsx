@@ -1,16 +1,13 @@
-// React hooks
+// React Router
 import { Outlet, useLoaderData } from "react-router";
 
 // Internationalization
-import {
-    DEFAULT_LOCALE,
-    getFixedT,
-    isSupportedLocale,
-} from "~/i18n";
+import { DEFAULT_LOCALE, getFixedT, isSupportedLocale } from "~/i18n";
 
 // Types
 import type { Route } from "./+types/$locale._layout";
-import { type Locale } from "~/i18n";
+import type { Locale } from "~/i18n";
+
 type LoaderData = { locale: Locale };
 
 // Components

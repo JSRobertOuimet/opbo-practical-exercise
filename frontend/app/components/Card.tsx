@@ -2,9 +2,9 @@
 import { useTranslation } from "react-i18next";
 
 // Types
-import type { MenuMeal } from "~/types/types";
+import type { Meal } from "~/types/types";
 type CardProps = {
-    meal: MenuMeal;
+    meal: Meal;
 };
 
 // Components

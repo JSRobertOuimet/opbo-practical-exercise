@@ -6,13 +6,12 @@ import { useLoaderData } from "react-router";
 import { useTranslation } from "react-i18next";
 import { DEFAULT_LOCALE, getFixedT, normalizeLocale } from "~/i18n";
 
+// Utils and Constants
+import { CAFETERIA_IDS } from "~/constants/cafeterias";
+
 // Types
 import type { Route } from "./+types/$locale.cafeteria";
-import { type Locale } from "~/i18n";
-
-// Components
-import HeroImage from "~/components/HeroImage";
-import PageHeader from "~/components/PageHeader";
+import type { Locale } from "~/i18n";
 
 type MenuOptionPrices = Record<string, number>;
 type LoaderData = {
@@ -22,7 +21,9 @@ type LoaderData = {
     menuOptionPrices: MenuOptionPrices;
 };
 
-import { CAFETERIA_IDS } from "~/constants/cafeterias";
+// Components
+import HeroImage from "~/components/HeroImage";
+import PageHeader from "~/components/PageHeader";
 
 export async function loader({ params }: Route.LoaderArgs) {
     const locale: Locale = normalizeLocale(params.locale);

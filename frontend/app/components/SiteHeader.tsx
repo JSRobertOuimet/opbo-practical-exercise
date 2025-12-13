@@ -1,5 +1,10 @@
+// Internationalization
 import { useTranslation } from "react-i18next";
+
+// React Router
 import { Link, NavLink, useLocation } from "react-router";
+
+// Types
 import type { Locale } from "~/i18n";
 
 const SiteHeader = ({ locale }: { locale: Locale }) => {

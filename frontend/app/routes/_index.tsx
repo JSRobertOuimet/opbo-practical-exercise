@@ -1,4 +1,4 @@
-// React hooks
+// React Router
 import { redirect } from "react-router";
 
 // Types
