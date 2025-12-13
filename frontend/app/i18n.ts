@@ -35,4 +35,30 @@ export function getFixedT(locale?: string | null) {
     return i18n.getFixedT(normalizeLocale(locale));
 }
 
+export function detectLocaleFromHeader(acceptLanguage?: string | null): Locale {
+    if (!acceptLanguage) {
+        return DEFAULT_LOCALE;
+    }
+
+    const languages = acceptLanguage
+        .split(",")
+        .map((lang) => {
+            const [locale, qValue] = lang.trim().split(";");
+            const quality = qValue ? parseFloat(qValue.replace("q=", "")) : 1.0;
+            return {
+                locale: locale.toLowerCase().split("-")[0],
+                quality,
+            };
+        })
+        .sort((a, b) => b.quality - a.quality);
+
+    for (const { locale } of languages) {
+        if (isSupportedLocale(locale)) {
+            return locale;
+        }
+    }
+
+    return DEFAULT_LOCALE;
+}
+
 export default i18n;
