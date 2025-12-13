@@ -12,6 +12,13 @@
         "french": "Français",
         "logo_alt": "Logo of xtrek."
     },
+    "errors": {
+        "oops": "Oops!",
+        "unexpected_error": "An unexpected error occurred.",
+        "error": "Error",
+        "not_found": "404",
+        "page_not_found": "The requested page could not be found."
+    },
     "pages": {
         "cafeteria": {
             "audience": "For xtrek employees",

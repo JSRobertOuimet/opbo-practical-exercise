@@ -13,7 +13,7 @@ import {
 } from "react-router";
 
 // Internationalization
-import { I18nextProvider } from "react-i18next";
+import { I18nextProvider, useTranslation } from "react-i18next";
 import i18n, { normalizeLocale, type Locale } from "app/i18n";
 
 // Types
@@ -83,15 +83,27 @@ export default function App() {
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
-    let message = "Oops!";
-    let details = "An unexpected error occurred.";
+    const matches = useMatches();
+    const localeMatch = matches.find((match) => match.params?.locale);
+    const locale: Locale = normalizeLocale(localeMatch?.params?.locale);
+    const { t } = useTranslation();
+
+    useEffect(() => {
+        if (i18n.language !== locale) {
+            void i18n.changeLanguage(locale);
+        }
+    }, [locale]);
+
+    let message = t("errors.oops");
+    let details = t("errors.unexpected_error");
     let stack: string | undefined;
 
     if (isRouteErrorResponse(error)) {
-        message = error.status === 404 ? "404" : "Error";
+        message =
+            error.status === 404 ? t("errors.not_found") : t("errors.error");
         details =
             error.status === 404
-                ? "The requested page could not be found."
+                ? t("errors.page_not_found")
                 : error.statusText || details;
     } else if (import.meta.env.DEV && error && error instanceof Error) {
         details = error.message;
