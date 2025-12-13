@@ -40,7 +40,7 @@ const Card = ({ meal }: CardProps) => {
             <p className="mb-4">{meal.description}</p>
 
             {meal.dietaryOptions.length > 0 && (
-                <ul className="mb-4 flex gap-8">
+                <ul className="mb-4 flex w-full flex-wrap gap-x-8 gap-y-2">
                     {meal.dietaryOptions.map((option) => (
                         <Tag key={option} option={option} />
                     ))}
