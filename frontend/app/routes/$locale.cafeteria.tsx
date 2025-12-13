@@ -22,13 +22,7 @@ type LoaderData = {
     menuOptionPrices: MenuOptionPrices;
 };
 
-// IDs reused for catering prefetch
-const CAFETERIA_IDS = [
-    "britannia",
-    "glebe",
-    "mitigomijokan",
-    "versant",
-] as const;
+import { CAFETERIA_IDS } from "~/constants/cafeterias";
 
 export async function loader({ params }: Route.LoaderArgs) {
     const locale: Locale = normalizeLocale(params.locale);

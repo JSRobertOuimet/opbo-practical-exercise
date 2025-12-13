@@ -20,7 +20,7 @@ type CacheEntry = {
     cachedAt: number;
 };
 
-const CACHE_LIFESPAN = 5 * 60 * 1000; // 5 minutes
+import { CACHE_LIFESPAN } from "~/constants/cache";
 const cache = new Map<string, CacheEntry>();
 
 export async function loader({ params, request }: Route.LoaderArgs) {
