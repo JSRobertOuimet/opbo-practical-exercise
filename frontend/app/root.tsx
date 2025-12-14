@@ -14,10 +14,11 @@ import {
 
 // Internationalization
 import { I18nextProvider, useTranslation } from "react-i18next";
-import i18n, { normalizeLocale, type Locale } from "~/utils/i18n";
+import i18n, { normalizeLocale } from "~/utils/i18n";
 
 // Types
 import type { Route } from "./+types/root";
+import type { Locale } from "~/constants/locales";
 
 // Styles
 import "./app.css";

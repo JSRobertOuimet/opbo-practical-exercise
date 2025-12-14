@@ -1,12 +1,17 @@
+// i18next
 import i18n, { type Resource } from "i18next";
 import { initReactI18next } from "react-i18next";
 
+// Translations
 import enTranslation from "../locales/en/translation.json";
 import frTranslation from "../locales/fr/translation.json";
 
-export const SUPPORTED_LOCALES = ["en", "fr"] as const;
-export type Locale = (typeof SUPPORTED_LOCALES)[number];
-export const DEFAULT_LOCALE: Locale = "en";
+// Constants
+import {
+    DEFAULT_LOCALE,
+    SUPPORTED_LOCALES,
+    type Locale,
+} from "../constants/locales";
 
 const resources = {
     en: { translation: enTranslation },

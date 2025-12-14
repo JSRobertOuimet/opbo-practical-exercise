@@ -4,14 +4,15 @@ import { useLoaderData } from "react-router";
 
 // Internationalization
 import { useTranslation } from "react-i18next";
-import { DEFAULT_LOCALE, getFixedT, normalizeLocale } from "~/utils/i18n";
+import { getFixedT, normalizeLocale } from "~/utils/i18n";
 
 // Constants
 import { CAFETERIA_IDS } from "~/constants/cafeterias";
+import { DEFAULT_LOCALE } from "~/constants/locales";
 
 // Types
 import type { Route } from "./+types/$locale.cafeteria";
-import type { Locale } from "~/utils/i18n";
+import type { Locale } from "~/constants/locales";
 
 type MenuOptionPrices = Record<string, number>;
 type LoaderData = {

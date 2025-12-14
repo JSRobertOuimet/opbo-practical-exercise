@@ -4,14 +4,17 @@ import { useSearchParams, useFetcher } from "react-router";
 
 // Internationalization
 import { useTranslation } from "react-i18next";
-import { DEFAULT_LOCALE, getFixedT, normalizeLocale } from "~/utils/i18n";
+import { getFixedT, normalizeLocale } from "~/utils/i18n";
+
+// Constants
+import { DEFAULT_LOCALE } from "~/constants/locales";
 
 // Utils
 import { createBaseMenu } from "~/utils/menuFactory";
 
 // Types
 import type { Route } from "./+types/$locale.catering-services";
-import type { Locale } from "~/utils/i18n";
+import type { Locale } from "~/constants/locales";
 import type { MealTier, MealType, MenuByMeal } from "~/types/types";
 
 type LoaderData = {

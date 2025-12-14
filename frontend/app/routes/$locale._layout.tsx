@@ -2,11 +2,14 @@
 import { Outlet, useLoaderData } from "react-router";
 
 // Internationalization
-import { DEFAULT_LOCALE, getFixedT, isSupportedLocale } from "~/utils/i18n";
+import { getFixedT, isSupportedLocale } from "~/utils/i18n";
+
+// Constants
+import { DEFAULT_LOCALE } from "~/constants/locales";
 
 // Types
 import type { Route } from "./+types/$locale._layout";
-import type { Locale } from "~/utils/i18n";
+import type { Locale } from "~/constants/locales";
 
 type LoaderData = { locale: Locale };
 

@@ -1,0 +1,6 @@
+// Types
+export type Locale = "en" | "fr";
+
+// Constants
+export const SUPPORTED_LOCALES: Locale[] = ["en", "fr"];
+export const DEFAULT_LOCALE: Locale = "en";
